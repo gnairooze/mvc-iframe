@@ -1,0 +1,73 @@
+﻿
+@{
+    Layout = null;
+}
+
+@model mvc_iframe.Models.Contact
+
+@{
+    ViewBag.Title = "Contact - Details";
+    ViewBag.Module = "Contact";
+}
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+</head>
+<body>
+    <div>
+        <h2>Details</h2>
+
+        <div>
+            <h4>@ViewBag.Module</h4>
+            <hr />
+            <dl class="dl-horizontal">
+                <dt>
+                    @Html.DisplayNameFor(model => model.Name)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.Name)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.Age)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.Age)
+                </dd>
+
+                @foreach (var phone in Model.Phones)
+                {
+                    <dt>
+                        @Html.DisplayNameFor(item => phone)
+                    </dt>
+
+                        <dd>
+                            @Html.DisplayFor(item => phone)
+                        </dd>
+                }
+
+
+            </dl>
+        </div>
+        <p>
+            @Html.ActionLink("First29", "Index", new { id = UrlParameter.Optional }) |
+            @Html.ActionLink("Another26", "Index", new { id = 26 })
+        </p>
+
+        <p>
+            <input type="button" id="btnpopup" value="Upload File" onclick="ShowModelPopUp();" />
+        </p>
+
+        <script type="text/javascript">
+            ShowModelPopUp = function () {
+                window.open('/Contact/Upload', "Upload File", 'width=400px,height=400px');
+            }
+        </script>
+    </div>
+</body>
+</html>
